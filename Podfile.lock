@@ -1,0 +1,12 @@
+PODS:
+  - Freddy (2.0.2)
+
+DEPENDENCIES:
+  - Freddy
+
+SPEC CHECKSUMS:
+  Freddy: e53713b8d5be02dbf5f4132c44d899d99eb09a6b
+
+PODFILE CHECKSUM: 8aa4470a1e6bedfc52a45c7a6c658e401a1346d9
+
+COCOAPODS: 1.0.0.beta.3
