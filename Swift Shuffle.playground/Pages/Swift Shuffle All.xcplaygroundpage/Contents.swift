@@ -1,5 +1,9 @@
 //: [Previous](@previous)
 
+/*:
+# Playground page for fetching all SwiftDoc pages and choosing one at random.
+ */
+
 import Freddy
 import XCPlayground
 
@@ -13,6 +17,10 @@ let task = NSURLSession.sharedSession().dataTaskWithURL(SwiftDocURLs) { (data, r
         return
     }
     do {
+/*:
+This expects the data returned to be a dictionary of `["name":"URL"]` values
+- note: The first component of the URLs path can be used to categorise the names.
+*/
         let json = try JSON(data: data)
         if case let .Dictionary(dictionary) = json {
             var categories = [String: [String]]()
@@ -27,6 +35,10 @@ let task = NSURLSession.sharedSession().dataTaskWithURL(SwiftDocURLs) { (data, r
                 }
             }
 
+/*:
+ Now some spare categories are removed and then a random category and name within that category care chosen.
+- important: Operators are removed as these are of limited interest in isolation.
+*/
             ["404", "operator"].forEach { categories.removeValueForKey($0) }
             
             let keyIndexInt = arc4random_uniform(UInt32(categories.keys.count))
@@ -42,6 +54,7 @@ let task = NSURLSession.sharedSession().dataTaskWithURL(SwiftDocURLs) { (data, r
 }
 
 task.resume()
+
 
 
 //: [Next](@next)
